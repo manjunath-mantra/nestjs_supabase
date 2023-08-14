@@ -1,23 +1,3 @@
-// import { Module } from '@nestjs/common';
-// import { GraphQLModule } from '@nestjs/graphql';
-// import { join } from 'path';
-// import { AppController } from './app.controller';
-// import { AppService } from './app.service';
-// import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-// import { SupabaseService } from './supabase/supabase.service';
-// import { UsersResolver } from './user/user.resolver';
-
-// @Module({
-//   imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
-//     driver: ApolloDriver,
-//     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-//     playground: true
-//   })],
-//   controllers: [AppController],
-//   providers: [AppService,SupabaseService,UsersResolver],
-// })
-// export class AppModule {}
-
 
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -28,6 +8,7 @@ import { JwtStrategy } from './jwt/jwt.strategy';
 import { AuthController } from './auth/auth.controller';
 import { SupabaseService } from './supabase/supabase.service';
 import { JwtAuthService } from './jwt/jwt.service';
+import { AuthModule } from './jwt/jwt.module';
 
 
 @Module({
@@ -36,6 +17,7 @@ import { JwtAuthService } from './jwt/jwt.service';
     PassportModule,
     SupabaseModule,
     JwtModule,
+    AuthModule
   ],
   controllers: [AuthController],
   providers: [JwtStrategy,SupabaseService,JwtAuthService,ConfigService],
