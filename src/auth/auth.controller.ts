@@ -3,7 +3,7 @@ import { SupabaseService } from '../supabase/supabase.service';
 import { JwtAuthService } from '../jwt/jwt.service';
 import { AuthResponse, AuthTokenResponse, User } from '@supabase/supabase-js'; 
 
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(
     private readonly supabaseService: SupabaseService,
